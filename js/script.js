@@ -60,13 +60,9 @@ btnFoll.addEventListener ("click" , function(){
         indexImg++;
         //rimuovo la classe hidden al nuovo indice 
         containImg[indexImg].classList.remove("hidden");
-    }else if (indexImg > 4){
+    }if (indexImg > (containImg.length -1)){
         containImg[indexImg].classList.add("hidden");
         indexImg = 0 ; 
-        containImg[indexImg].classList.remove("hidden");
-        //incremento l'indice 
-        indexImg++;
-        //rimuovo la classe hidden al nuovo indice 
         containImg[indexImg].classList.remove("hidden");
     }
 });
