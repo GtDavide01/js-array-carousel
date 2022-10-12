@@ -43,6 +43,9 @@ for(let i=0 ; i <caroselloImg.length ; i++){
     caroselloImgRight.innerHTML += divimgright;
 }
 
+
+
+
 //rendo visibile solo la prima immagine 
 const containImg = document.getElementsByClassName("caroselloimg");
 console.log(containImg); 
@@ -65,7 +68,7 @@ console.log(btnPrev);
 
 
 //Istruzioni da eseguire quando clicco foll
-btnFoll.addEventListener ("click" , function(){ 
+btnPrev.addEventListener ("click" , function(){ 
     containImg[indexImg].classList.add("hidden");
     cardContainimg[indexImg].classList.remove("cardcarosellovisible");
     if (indexImg < containImg.length - 1) {
@@ -79,7 +82,7 @@ btnFoll.addEventListener ("click" , function(){
 });
 
 //Istruzioni da eseguire quando clicco prev 
-btnPrev.addEventListener("click" ,function(){
+btnFoll.addEventListener("click" ,function(){
     cardContainimg[indexImg].classList.remove("cardcarosellovisible");
     containImg[indexImg].classList.add("hidden");
     if(indexImg > 0 ){
@@ -90,4 +93,5 @@ btnPrev.addEventListener("click" ,function(){
     containImg[indexImg].classList.remove("hidden");
     cardContainimg[indexImg].classList.add("cardcarosellovisible");
 })
+
 
