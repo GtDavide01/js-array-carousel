@@ -1,10 +1,4 @@
 /* **Consegna:**
-
-
-**MILESTONE 3**
-Al click dell'utente sulle frecce, il programma cambierà l’immagine attiva, che quindi verrà visualizzata al posto della precedente.
-**BONUS 1:**
-Aggiungere il **ciclo infinito** del carosello. Ovvero se è attiva la prima immagine e l'utente clicca la freccia per andare all’immagine precedente, dovrà comparire l’ultima immagine dell’array e viceversa.
 **BONUS 2:**
 Aggiungere la visualizzazione di tutte le thumbnails sulla destra dell’immagine grande attiva, come nello screenshot proposto. Tutte le miniature avranno un layer di opacità scura, tranne quella corrispondente all’immagine attiva, che invece avrà un bordo colorato.
 Al click delle frecce, oltre al cambio di immagine attiva, gestire il cambio di miniatura attiva.
@@ -35,12 +29,31 @@ for(let i=0 ; i <caroselloImg.length ; i++){
     //aggiungo all'html i div contenti le img
     caroselloImgHtml.innerHTML += divimg;
 }
+//carosello right 
+const caroselloImgRight = document.querySelector(".caroselloright");
+console.log(caroselloImgRight);
+//per ogni elemento creo un div 
+for(let i=0 ; i <caroselloImg.length ; i++){
+    const divimgright = 
+    `<div class="cardcarosello">
+        <img src="${caroselloImg[i]}" alt="">
+    </div>`
+
+    //aggiungo all'html i div contenti le img
+    caroselloImgRight.innerHTML += divimgright;
+}
 
 //rendo visibile solo la prima immagine 
 const containImg = document.getElementsByClassName("caroselloimg");
 console.log(containImg); 
 let indexImg = 0 ; 
 containImg[indexImg].classList.remove("hidden");
+
+//aggiungo bordo alla prima immagine
+const cardContainimg = document.getElementsByClassName("cardcarosello");
+console.log(cardContainimg);
+cardContainimg[indexImg].classList.add("cardcarosellovisible");
+
 
 //al click del bottone avanti cambio posizione dell'indice mostrando l'altra immagine e nascondendo la precendeter 
 //recupero elementi html dei due bottoni 
@@ -54,16 +67,20 @@ console.log(btnPrev);
 //Istruzioni da eseguire quando clicco foll
 btnFoll.addEventListener ("click" , function(){ 
     containImg[indexImg].classList.add("hidden");
+    cardContainimg[indexImg].classList.remove("cardcarosellovisible");
     if (indexImg < containImg.length - 1) {
       indexImg++;
     } else {
       indexImg = 0;
     }
     containImg[indexImg].classList.remove("hidden");
+    cardContainimg[indexImg].classList.add("cardcarosellovisible");
+
 });
 
 //Istruzioni da eseguire quando clicco prev 
 btnPrev.addEventListener("click" ,function(){
+    cardContainimg[indexImg].classList.remove("cardcarosellovisible");
     containImg[indexImg].classList.add("hidden");
     if(indexImg > 0 ){
         indexImg--;
@@ -71,4 +88,6 @@ btnPrev.addEventListener("click" ,function(){
         indexImg = 4; 
     }
     containImg[indexImg].classList.remove("hidden");
+    cardContainimg[indexImg].classList.add("cardcarosellovisible");
 })
+
