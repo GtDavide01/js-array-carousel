@@ -53,28 +53,22 @@ console.log(btnPrev);
 
 //Istruzioni da eseguire quando clicco foll
 btnFoll.addEventListener ("click" , function(){ 
-    if(indexImg < (containImg.length -1 )){
-        //rendo invisibile la prima immagine 
-        containImg[indexImg].classList.add("hidden");
-        //incremento l'indice 
-        indexImg++;
-        //rimuovo la classe hidden al nuovo indice 
-        containImg[indexImg].classList.remove("hidden");
-    }if (indexImg > (containImg.length -1)){
-        containImg[indexImg].classList.add("hidden");
-        indexImg = 0 ; 
-        containImg[indexImg].classList.remove("hidden");
+    containImg[indexImg].classList.add("hidden");
+    if (indexImg < containImg.length - 1) {
+      indexImg++;
+    } else {
+      indexImg = 0;
     }
+    containImg[indexImg].classList.remove("hidden");
 });
 
 //Istruzioni da eseguire quando clicco prev 
 btnPrev.addEventListener("click" ,function(){
+    containImg[indexImg].classList.add("hidden");
     if(indexImg > 0 ){
-        //inserisoc  la classe hidden all'item corrente 
-        containImg[indexImg].classList.add("hidden");
-        //decremento indexiMg
         indexImg--;
-        //rimuovo la classe hiden al nuovo indice  
-        containImg[indexImg].classList.remove("hidden");
+    }else{
+        indexImg = 4; 
     }
+    containImg[indexImg].classList.remove("hidden");
 })
