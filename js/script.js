@@ -1,9 +1,6 @@
 /* **Consegna:**
-Dato un array contenente una lista di cinque immagini, creare un carosello come nello screenshot allegato.
-**MILESTONE 1**
-Per prima cosa, creiamo il markup statico: costruiamo il container e inseriamo un'immagine grande al centro: avremo così la struttura base e gli stili pronti per poterci poi concentrare solamente sull'aspetto logico.
+
 **MILESTONE 2**
-Adesso rimuoviamo tutto il markup statico e inseriamo tutte le immagini dinamicamente servendoci dell'array fornito e un semplice ciclo for che concatena un template literal.
 Tutte le immagini saranno nascoste, tranne la prima, che avrà una classe specifica che la renderà visibile.
 Al termine di questa fase ci ritroveremo con lo stesso slider stilato nella milestone 1, ma costruito dinamicamente attraverso JavaScript.
 **MILESTONE 3**
@@ -20,3 +17,38 @@ Non lasciamoci spaventare dalla complessità apparente dell'esercizio, ma analiz
 2. Scriviamo sempre prima per punti il nostro algoritmo in italiano per capire cosa vogliamo fare
 3. Al momento giusto (ihihhi starà a voi capire quale) rispondete a questa domanda: "Quanti cicli servono?"
 Buon lavoro e buon divertimento! :faccia_leggermente_sorridente: */
+
+
+//recupero div caroselloimg dall'html
+const caroselloImgHtml = document.querySelector(".carosello-img-container");
+console.log(caroselloImgHtml);
+
+//Creo array contente le immagini 
+const caroselloImg = ["img/01.jpg" , "img/02.jpg" , "img/03.jpg" , "img/04.jpg" , "img/05.jpg"];
+console.log(caroselloImg);
+
+//per ogni elemento creo il suo div
+for(let i=0 ; i <caroselloImg.length ; i++){
+    const divimg = 
+    `<div class="caroselloimg  hidden">
+        <img src="${caroselloImg[i]}" alt="">
+    </div>`
+
+    //aggiungo all'html i div contenti le img
+    caroselloImgHtml.innerHTML += divimg;
+}
+
+//rendo visibile solo la prima immagine 
+const containImg = document.getElementsByClassName("caroselloimg");
+console.log(containImg); 
+let indexImg = 0 ; 
+containImg[indexImg].classList.remove("hidden");
+
+//al click del bottone avanti cambio posizione dell'indice mostrando l'altra immagine e nascondendo la precendeter 
+//recupero elementi html dei due bottoni 
+const btnFoll = document.querySelector(".foll");
+console.log(btnFoll);
+
+const btnPrev = document.querySelector(".prev");
+console.log(btnPrev);
+
