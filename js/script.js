@@ -1,8 +1,6 @@
 /* **Consegna:**
 
-**MILESTONE 2**
-Tutte le immagini saranno nascoste, tranne la prima, che avrà una classe specifica che la renderà visibile.
-Al termine di questa fase ci ritroveremo con lo stesso slider stilato nella milestone 1, ma costruito dinamicamente attraverso JavaScript.
+
 **MILESTONE 3**
 Al click dell'utente sulle frecce, il programma cambierà l’immagine attiva, che quindi verrà visualizzata al posto della precedente.
 **BONUS 1:**
@@ -52,3 +50,27 @@ console.log(btnFoll);
 const btnPrev = document.querySelector(".prev");
 console.log(btnPrev);
 
+
+//Istruzioni da eseguire quando clicco foll
+btnFoll.addEventListener ("click" , function(){ 
+    if(indexImg < (containImg.length -1 )){
+        //rendo invisibile la prima immagine 
+        containImg[indexImg].classList.add("hidden");
+        //incremento l'indice 
+        indexImg++;
+        //rimuovo la classe hidden al nuovo indice 
+        containImg[indexImg].classList.remove("hidden");
+    }
+});
+
+//Istruzioni da eseguire quando clicco prev 
+btnPrev.addEventListener("click" ,function(){
+    if(indexImg > 0 ){
+        //inserisoc  la classe hidden all'item corrente 
+        containImg[indexImg].classList.add("hidden");
+        //decremento indexiMg
+        indexImg--;
+        //rimuovo la classe hiden al nuovo indice  
+        containImg[indexImg].classList.remove("hidden");
+    }
+})
